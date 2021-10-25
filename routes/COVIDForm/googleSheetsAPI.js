@@ -74,6 +74,7 @@ async function uploadData(data) {
 
     await sheet.saveUpdatedCells()
     console.log("Google Sheets - Data Entered");
+    console.log("Google Sheets - DONE");
 }
 
 module.exports = {
