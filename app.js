@@ -18,7 +18,8 @@ app.use(session({
     secret: properties.get('server.session_middleware_secret'),
     resave: true,
     saveUninitialized: false,
-    cookie: { secure: true }
+    cookie: { secure: true },
+    proxy: true,
 }))
 
 app.set('view engine', 'ejs')
