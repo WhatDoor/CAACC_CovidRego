@@ -57,7 +57,7 @@ setInterval(function () {
 }, 5000);
 
 //Seats Data
-const STARTING_SEATS = 0
+const STARTING_SEATS = properties.get('Form_Values.max_capacity'); 
 let seats_remaining = STARTING_SEATS
 
 //Reduce the number of seats remaining by the number of seats already reserved in DB
