@@ -74,6 +74,6 @@ const options = {
 */
 
 var HTTP_PORT = properties.get('server.http_port');
-http.createServer(app).listen(HTTP_PORT, '192.168.1.118', () => console.log(`Listening on HTTP at ${HTTP_PORT}`));
+http.createServer(app).listen(HTTP_PORT, () => console.log(`Listening on HTTP at ${HTTP_PORT}`));
 //https.createServer(options, app).listen(properties.get('server.https_port'))
 console.log("COVID Rego Ready!");
