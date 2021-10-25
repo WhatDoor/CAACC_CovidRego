@@ -23,10 +23,10 @@ app.use(session({
 
 app.set('view engine', 'ejs')
 
+app.enable('trust proxy');
 //Ensure that http requests are redirected to https
 
 /*
-app.enable('trust proxy');
 app.use (function (req, res, next) {
     if (req.secure) {
             // request was via https, so do no special handling
