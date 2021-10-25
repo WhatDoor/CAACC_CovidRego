@@ -18,13 +18,13 @@ app.use(session({
     secret: properties.get('server.session_middleware_secret'),
     resave: true,
     saveUninitialized: false,
-    cookie: { secure: false }
+    cookie: { secure: true }
 }))
 
 app.set('view engine', 'ejs')
 
 //Ensure that http requests are redirected to https
-/*
+
 app.enable('trust proxy');
 app.use (function (req, res, next) {
     if (req.secure) {
@@ -35,7 +35,6 @@ app.use (function (req, res, next) {
             res.redirect('https://' + req.headers.host + req.url);
     }
 });
-*/
 
 //Routing
 const COVIDForm = require('./routes/COVIDForm/COVIDForm.js')
@@ -62,18 +61,6 @@ app.use('/', (req, res, next) => {
     });
 });
 
-// Certificates for HTTPS
-//const privateKey = fs.readFileSync(properties.get('server.privateKey'), 'utf8');
-//const certificate = fs.readFileSync(properties.get('server.certificate'), 'utf8');
-
-/*
-const options = {
-	key: privateKey,
-	cert: certificate,
-};
-*/
-
 var HTTP_PORT = properties.get('server.http_port');
 http.createServer(app).listen(HTTP_PORT, () => console.log(`Listening on HTTP at ${HTTP_PORT}`));
-//https.createServer(options, app).listen(properties.get('server.https_port'))
 console.log("COVID Rego Ready!");
