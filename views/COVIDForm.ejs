@@ -1,0 +1,71 @@
+<%- include('includes/head.ejs') %>
+    <script type = "text/javascript">
+        // Form validation code will come here.
+        function validate(form) {
+            if(form.num_attendees.value > 1 && form.other_persons.value == "") {
+                alert("You have said that there are " +  form.num_attendees.value + " people coming, please provide the other persons! (Separate multiple names with a comma)");
+                form.other_persons.focus();
+                return false;
+            }
+            return( true );
+        }
+    </script>     
+</head>
+
+<body>
+    <main>
+        <div class="jumbotron">
+            <div class="container">
+                <h1 class="display-4">CAACC English Sunday Service Reservation (<%=date%>)</h1>
+                <p class="lead">Number of Seats Remaining: <%=seats%></p>
+                <hr class="my-4">
+                <p>By using this form, you acknowledge that your immunity is paramount in illness prevention. Have plenty of rest, stay home if you are feeling unwell. Do not attend any gatherings if you have any flu-like symptoms.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <form action="/CAACC/submit" method="POST" onsubmit = "return validate(this)">
+                    <div class="form-group">
+                        <label for="Name">Name:</label>
+                        <input class="form-control" type="text" id="name" name="name" required maxlength="100" value="<%=priorInputs.Name%>" autofocus>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Total seats Attendees">Total seats reserving:</label>
+                        <select class="form-control" name="num_attendees" id="num_attendees">                            
+                            <option value="1" <%if (priorInputs.SeatsReserved==1) { %>selected <% } %>>1</option>
+                            <option value="2" <%if (priorInputs.SeatsReserved==2) { %>selected <% } %>>2</option>
+                            <option value="3" <%if (priorInputs.SeatsReserved==3) { %>selected <% } %>>3</option>
+                            <option value="4" <%if (priorInputs.SeatsReserved==4) { %>selected <% } %>>4</option>
+                            <option value="5" <%if (priorInputs.SeatsReserved==5) { %>selected <% } %>>5</option>
+                            <option value="6" <%if (priorInputs.SeatsReserved==6) { %>selected <% } %>>6</option>
+                            <option value="7" <%if (priorInputs.SeatsReserved==7) { %>selected <% } %>>7</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Contact Number">Contact Number:</label>
+                        <input class="form-control" type="text" id="contact_num" name="contact_num" required pattern="[0-9]{10}" value="<%=priorInputs.ContactNumber%>">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Email">Email (optional):</label>
+                        <input class="form-control" type="email" id="email" name="email" maxlength="100" value="<%=priorInputs.email%>">
+                        <small class="form-text text-muted">You will receive an email notification if you provide this</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Other persons">Other persons in this reservation (please separate each person with commas):</label>
+                        <input class="form-control" type="text" id="other_persons" name="other_persons" maxlength="255" value="<%=priorInputs.OtherPersons%>">
+                        <small class="form-text text-muted">Preferably, these people are also within the same household. You must be able to contact these persons on request, otherwise, please make a separate reservation.</small>
+                    </div>
+                    
+                    <div class="row justify-content-center">
+                        <input type="submit" class="btn btn-primary col-5" value="Submit">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+<%- include('includes/end.ejs') %>

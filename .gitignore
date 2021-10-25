@@ -103,5 +103,6 @@ dist
 # TernJS port file
 .tern-port
 
-# Properties files with creds
+# Files with creds
 properties.ini
+routes/COVIDForm/google_sheet_creds.json

@@ -62,15 +62,17 @@ app.use('/', (req, res, next) => {
 });
 
 // Certificates for HTTPS
-const privateKey = fs.readFileSync(properties.get('server.privateKey'), 'utf8');
-const certificate = fs.readFileSync(properties.get('server.certificate'), 'utf8');
+//const privateKey = fs.readFileSync(properties.get('server.privateKey'), 'utf8');
+//const certificate = fs.readFileSync(properties.get('server.certificate'), 'utf8');
 
+/*
 const options = {
 	key: privateKey,
 	cert: certificate,
 };
+*/
 
 http.createServer(app).listen(properties.get('server.http_port'))
-https.createServer(options, app).listen(properties.get('server.https_port'))
+//https.createServer(options, app).listen(properties.get('server.https_port'))
 
 console.log("COVID Rego Ready!");
