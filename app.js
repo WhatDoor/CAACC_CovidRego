@@ -48,7 +48,7 @@ app.use('/SundayRego', COVIDForm.routes)
 //app.use(`/${COVIDForm_Event.event_link}`, COVIDForm_Event.routes)
 
 app.get('/', (req, res, next) => {
-    res.send('Hello World!')
+    res.redirect('/SundayRego')
 })
 
 //Middleware for parsing the request body
