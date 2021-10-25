@@ -25,6 +25,7 @@ app.set('view engine', 'ejs')
 
 //Ensure that http requests are redirected to https
 
+/*
 app.enable('trust proxy');
 app.use (function (req, res, next) {
     if (req.secure) {
@@ -35,6 +36,7 @@ app.use (function (req, res, next) {
             res.redirect('https://' + req.headers.host + req.url);
     }
 });
+*/
 
 //Routing
 const COVIDForm = require('./routes/COVIDForm/COVIDForm.js')
