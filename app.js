@@ -44,7 +44,7 @@ const COVIDForm = require('./routes/COVIDForm/COVIDForm.js')
 //Middleware to accept variables in post requests
 app.use(bodyParser.urlencoded({extended: false}))
 
-app.use('/CAACC', COVIDForm.routes)
+app.use('/SundayRego', COVIDForm.routes)
 //app.use(`/${COVIDForm_Event.event_link}`, COVIDForm_Event.routes)
 
 app.get('/', (req, res, next) => {
