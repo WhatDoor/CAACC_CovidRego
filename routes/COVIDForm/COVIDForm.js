@@ -54,7 +54,7 @@ sql_con.connect(function(err) {
 // Heartbeat for mysql to keep the connection alive
 setInterval(function () {
     sql_con.query('SELECT 1');
-}, 5000);
+}, 1000);
 
 //Seats Data
 const STARTING_SEATS = properties.get('Form_Values.max_capacity'); 
