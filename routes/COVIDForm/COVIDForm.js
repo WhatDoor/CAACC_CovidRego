@@ -27,6 +27,21 @@ var transporter = nodemailer.createTransport({
     }
   });
 
+var mailOptions = {
+    from: 'jwonghomeiot@gmail.com',
+    to: 'jacobwongzunyi@hotmail.com',
+    subject: `STARTING CAACC.LIVE`,
+    text: `The application was (re)started!`
+};
+
+transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+        console.log("Email Error:\n" + error);
+    } else {
+        console.log('Email sent: ' + info.response);
+    }
+});
+
 //Set up Express Router
 const router = express.Router();
 
